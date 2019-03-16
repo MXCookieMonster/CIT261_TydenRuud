@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            html {
+                background-color: darkslategrey;
+                color: lime;
+            }
+            
+            
+
+        </style>
+    </head>
+    <body>
+        <h3><u>HTML Audio, Visual, Canvas Tags</u></h3>
+        
+        <h3>Calling Videos from local file and youtube.</h3>
+        <video width="775px" controls>
+            <source src="videos/reaper.mp4" type="video/mp4">
+        </video><br><br>
+        <iframe width="775px" height="440px" src="https://www.youtube.com/embed/-8wDQMD7FNU"></iframe>
+        
+        <h3>Calling an Audio File</h3>
+        <audio controls>
+            <source src="videos/reaper.mp4" type="audio/mp4">
+        </audio><br>
+        
+        <h3>Calling a Canvas Tag</h3>
+        <canvas id="canvasEx" width="600px" height="330px" style="border: double";>
+        </canvas>
+        
+        <script>
+            var t = document.getElementById("canvasEx");
+            var context = t.getContext("2d");
+            context.font = "36px times new roman";
+            context.fillStyle = "#ff00ff";
+            context.strokeText("There's Something on Your Face", 30, 75);
+            context.strokeText("It Was PAIN!!!", 285, 125);
+            
+        </script>
+        
+    </body> 
+</html>
