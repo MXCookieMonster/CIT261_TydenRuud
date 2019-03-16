@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        
+        html {
+            background-color: peru;
+        }
+        
+        
+        h1 {
+            color: darkslategrey;
+            font-family: lato;
+            font-size: 25px;
+            font-weight: 200;
+            text-align: center;
+        }
+
+
+
+        /* Background Rectangle */
+        .wrap {
+            margin: 50px auto;
+            background-color: grey;
+            width: 77%;
+            border-radius: 25px;
+            padding: 10px;
+            height: 225px;
+        }
+        
+        /*Changes positioning of objects inside of rectangele*/
+        .cont {
+            display: inline-block;
+            width: 150px;
+            margin-left: 15%;
+        }
+
+
+        /*This box class modifies the size and shape of
+           the boxes in example one*/
+        .box {
+            border-radius: 20px;
+            height: 50px;
+            margin: 25px auto;
+            width: 100px;
+        }
+        
+        /*Very simple transitions/transforms, changing where the object is Located, both boxes will travel 100px*/
+        .wrap:hover .box {
+            transform: translate(100px);
+        }
+
+        .box1 {
+            background-color: darkred;
+        }
+         
+        /*By giving each box their seperate ID they can have different manipulations, this second box has a transition that will make it seem like the box will slide across the screen*/
+        .box2 {
+            background-color: darkorange;
+            transition: all 1.5s;
+        }
+
+        /*Rotating Square*/
+        #one {
+            width: 50px;
+            height: 50px;
+            margin-left: 15%;
+            border-radius: 20%;
+            background-color: black;
+            
+        /*This defines the transition back to original state background-color defines the transition of color ease-in-out is the call to when the element is allowed to go back to normal*/
+            transition: background 1s ease-in-out 5s;
+
+        }
+
+        /* This is what occurs when the user hovers over the element*/ 
+        .wrap:hover #one {
+            width: 200px;
+            height: 200px;
+            transition: all 2s;
+            transform: rotate(720deg);
+            background-color: white;
+        }
+
+        /*On Click transition circles */
+
+        .wrap2 {
+          margin: 50px auto;
+            background-color: grey;
+            width: 77%;
+            border-radius: 25px;
+            padding: 10px;
+            height: 225px;
+        }
+
+        .cont2 {
+            display: inline-block;
+            width: 150px;
+            height: 300px;
+            padding-left: 33px;
+        }
+
+        .clickcir {
+            border-radius: 50%;
+            height: 35px;
+            margin: 50px auto;
+            width: 35px;
+            opacity: 1;
+        }
+
+        /*CSS version of onclick often times seen in link color changes*/
+        .wrap2 .clickcir:not(:active) {
+            transform: scale(3);
+            transition: ;
+            opacity: .7;
+        }
+
+        .clickcir1 {
+            background-color: darkred;
+            border: solid white 1px;
+            transition: 333ms;
+        }
+
+        .clickcir2 {
+            background-color: red;
+            border: solid white 1px;
+            transition: 1s;
+        }
+
+        .clickcir3 {
+            background-color: orange;
+            border: solid white 1px;
+            transition: 2s;
+        }
+
+       
+        /* creating circle elements and defining transitions */
+
+        .circles {
+            margin: 50px auto;
+            padding: 25px;
+            background-color: grey;
+            width: 77%;
+            border-radius: 33px;
+        }
+
+        .circle,
+        .circle0,
+        .circle1,
+        .circle2,
+        .circle3,
+        .circle4,
+        .circle5 {
+            border-radius: 50%;
+            height: 45px;
+            width: 45px;
+            margin: 10px;
+            margin-left: 60px;
+        }
+
+        /*Controls how far the cirlces move*/
+        .circles:hover .circle,
+        .circles:hover .circle0,
+        .circles:hover .circle1,
+        .circles:hover .circle2,
+        .circles:hover .circle3,
+        .circles:hover .circle4,
+        .circles:hover .circle5 {
+            transform: translateX(425px);
+        }
+
+        .circle0 {
+            background-color: black;
+            transition: 1.5s linear;
+
+        }
+
+        .circle1 {
+            background-color: darkred;
+            transition: all 1.5s ease;
+        }
+
+        
+  /*A cubic-bezier function allows you to set specific times for actions*/      
+        .circle2 {
+            background-color: red;
+            transition: all 3.0s cubic-bezier(.80, -.3, 0.98, 0);
+        }
+
+        .circle3 {
+            background-color: orange;
+            transition: all 1.5s ease-out;
+        }
+
+        .circle4 {
+            background-color: gold;
+            transition: all 1.5s ease-in-out;
+        }
+
+        .circle5 {
+            background-color: white;
+            transition: all 1.5s cubic-bezier(0.65, -.2, 0.80, 1);
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Simple CSS3 Transitions and Transforms</h1>
+    <h1>Transition + Transform</h1>
+
+    <div class="main">
+
+
+       <!--Here's the HTML that is added to each element class
+            Below is the tranform + transition Example-->
+
+        <div class="wrap">
+
+            <div class="cont">
+                <h1>Transform Only</h1>
+                <div class="box1 box"></div>
+            </div>
+
+            <div class="cont">
+                <h1>Transform and Transition</h1>
+                <div class="box2 box"></div>
+            </div>
+        </div>
+
+        <!--Rotation Example-->
+        <h1>Rotation Transition</h1>
+        <div class="wrap">
+            <div id="one"></div>
+        </div>
+
+        <!-- Onclick Cirlces -->
+        <h1>CSS3 Active Method</h1>
+        <div class="wrap2">
+            <div class="cont2">
+                <h1>.5s</h1>
+                <div class="clickcir clickcir1">
+                </div>
+            </div>
+            <div class="cont2">
+                <h1>1s</h1>
+                <div class="clickcir clickcir2">
+                </div>
+            </div>
+            <div class="cont2">
+                <h1>2s</h1>
+                <div class="clickcir clickcir3">
+                </div>
+            </div>
+           </div>
+
+        </div>
+
+        <!--floating circles-->
+        <h1>Using different Transition rule-sets</h1>
+        <div class="circles">
+            <div class="circle0"></div>
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+            <div class="circle5"></div>
+        </div>
+</body>
+
+</html>
