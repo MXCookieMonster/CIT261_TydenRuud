@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            html {
+                background-color: darkslategrey;
+                color: lime;
+                padding: 20pt;
+            }
+            
+            div#container {
+                height: 200px;
+                width: 200px;
+            }
+            
+            div#animationEx1 {
+                height: 200px;
+                width: 200px;
+            
+            }
+            
+            div#animationEx1:not(:active) {
+                animation: frameOne 3s both infinite;
+            }
+            
+            div#animationEx2 {
+                background: red;
+                height: 200px;
+                width: 200px;
+              
+            }
+            
+            div#animationEx2:hover {
+                background-color: darkgoldenrod;
+                animation: frame2 5s both;
+                height: 200px;
+                width:200px;
+            }
+            
+            div#animationEx3 {
+                background-color: darkred;
+                height: 200px;
+                width: 200px;
+              
+            }
+            
+            div#animationEx3:active {
+                animation: frame3 3s both 0s 1;
+            }
+            
+            @keyframes frameOne {
+                0%{
+                    background-color: black;
+                    height: 200px;
+                    width: 200px;
+                    transform: translateY(10px);
+                }
+                33% {
+                    background-color: silver;
+                    height: 200px;
+                    width: 200px;
+                    transform: translateY(30px);
+                }
+                66% {
+                    background-color: white;
+                    height: 200px;
+                    width: 200px;
+                    transform: translateY(-30px);
+                }
+                100% {
+                    background-color: black;
+                    height: 200px;
+                    width: 200px;
+                    transform: translateY(-10)
+                }
+            }
+            
+            @keyframes frame2 {
+                0% {
+                    background-color: darkgoldenrod;
+                    height: 200px;
+                    width: 200px;
+                }
+                33% {
+                    background-color: darkorange;
+                    height: 200px;
+                    width: 200px;
+                    transform: rotate(360deg);
+                }
+                66% {
+                    background-color: yellow;
+                    height: 200px;
+                    width: 200px;
+                    transform: rotate(-360deg);
+                }
+                100% {
+                    background-color: greenyellow;
+                    height: 200px;
+                    width: 200px;
+                    transform: rotate(360deg);
+                }
+                
+            }
+            
+            @keyframes frame3 {
+                0% {
+                    background-color: lime;
+                    height: 200px;
+                    width: 200px; 
+                }
+                25% {
+                    background: green;
+                    height: 100px;
+                    width: 100px;
+                   
+                }
+                50% {
+                    background: black;
+                    height: 50px;
+                    width: 50px;
+                 
+                }
+                75% {
+                    background-color: orange;
+                    height: 100px;
+                    width: 100px;
+                }
+                100% {
+                    background-color: darkred;
+                    height: 200px;
+                    width: 200px;
+                }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h3><u>CSS3 Animations</u></h3>
+        
+         <p>On Click CSS animation (hold)</p>
+         <div id="container">
+            <div id="animationEx3"></div>
+        </div>
+      
+        <p>On Hover CSS animation</p>
+        <div id="container">
+            <div id="animationEx2"></div>
+        </div>
+       
+        <p>Continuous Animation</p><br>
+        <div id="container">
+            <div id="animationEx1"></div>
+        </div>
+        
+        
+    </body> 
+</html>
