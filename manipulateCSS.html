@@ -1,0 +1,51 @@
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+           
+            
+            function switchCol() {
+                document.getElementById("wrting").style.color = "lime";
+            }
+            
+            function addPad() {
+                document.getElementById("wrting").style.padding = "20pt";
+            }
+            
+            function addBack() {
+                document.getElementById("background").style.backgroundColor = "darkslategrey";
+                
+                document.getElementById("header").style.cssText = "font-size: 32px; color: white";
+                
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id="background">
+            
+        <h1 id="header">Manipulating CSS3 Through JavaScript</h1>
+            
+        <p id="wrting">
+            You can use javascript to call and change any element in CSS. It's a less effective then creating a style page. Though there are times that it can be used to great effect. 
+            <br>
+            <br>
+            The first option changes the color of the text.
+            <br>
+            <br>
+            The second option changes the padding.
+            <br>
+            <br>
+            The last option creates a container to change the background of the text.
+        </p>
+        
+        <div> <button type="button" onclick="switchCol()">Color Change</button></div><br>
+            
+        <div> <button type="button" onclick="addPad()">Dimensions</button></div><br>
+      
+        <div> <button type="button" onclick="addBack()">Background</button></div>
+            
+        </div>
+        
+    </body>
+</html>

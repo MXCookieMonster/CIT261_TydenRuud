@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            html {
+                background-color:darkslategray;
+                color: lime;
+                padding: 20px;
+            }
+            
+            div {
+                border: double black;
+            }
+            
+             div#key {
+                background-color: yellow;
+                height: 200px;
+                width: 200px;
+            }
+            
+            div#container {
+                height: 200px;
+                width: 200px;
+                border: none;
+            }
+            
+            div#press {
+                background-color: lightgrey;
+                height: 200px;
+                width: 200px;
+            }
+            
+            div#move {
+                background-color: black;
+                height: 200px;
+                width: 200px;
+            }
+            
+            div#open {
+                background-color: red;
+                height: 200px;
+                width: 200px;
+            }
+              
+            div#onclick {
+                background-color: blue;
+                height: 200px;
+                width: 200px;
+            }
+            
+            @keyframes hitKey {
+                0% {
+                    background-color: black;
+                    height: 200px;
+                    width: 200px;
+                }
+                33% {
+                    background-color: violet;
+                    height: 100px;
+                    width: 100px;
+                }
+                66% {
+                    background-color: blue;
+                    height: 50px;
+                    width: 50px;
+                }
+                100% {
+                    background-color: yellow;
+                    height:10px;
+                    width: 10px;
+                }
+            }
+            
+            @keyframes outMouse {
+                0% {
+                    background-color: black;
+                    height: 200px;
+                    width: 200px;
+                }
+                33% {
+                    background-color: darkgreen;
+                    height: 140px;
+                    width: 140px;
+                }
+                66% {
+                    background-color: lawngreen;
+                    height: 75px;
+                    width: 75px; 
+                }
+                100% {
+                    background-color: lime;
+                    height: 10px;
+                    width: 10px;
+                }
+            }
+            
+             @keyframes onLoad {
+                0% {
+                    background-color: black;
+                    height: 200px;
+                    width: 200px;
+                }
+                33% {
+                    background-color: darkred;
+                    height: 150px;
+                    width: 150px;
+                }
+                66% {
+                    background-color: red;
+                    height: 75px;
+                    width: 75px;
+                }
+                100% {
+                    background-color: darkgoldenrod;
+                    height: 10px;
+                    width: 10px;
+                }
+            }
+            
+            @keyframes useClick {
+                0% {
+                    background-color: darkblue;
+                    height: 200px;
+                    width: 200px;
+                }
+                33% {
+                    background-color: blue;
+                    height: 150px;
+                    width: 150px;
+                }
+                66% {
+                    background-color: cadetblue;
+                    height: 75px;
+                    width: 75px;
+                }
+                100% {
+                    background-color: aqua;
+                    height: 10px;
+                    width: 10px;
+                }
+            }
+            
+            
+            
+        </style>
+    </head>
+    
+    
+    
+    <body>
+        <h2>JavaScript Standard Events</h2>
+        
+    <script>
+      
+        window.onclick = function clickItBox() {
+            var elem = document.getElementById('press');
+            elem.style.animation = "useClick 4s both";
+        }
+        
+        window.onkeypress = function keyBoard() {
+            var elem = document.getElementById('key');
+            elem.style.animation = "hitKey 6s both";
+        }
+        
+        function moAni() {
+            var elem = document.getElementById('move');
+            elem.style.animation = "outMouse 4s both";
+        }
+        
+        function moTran() {
+            var elem = document.getElementById('mouse');
+            elem.style.transition = "background 2.0s linear 0s";
+            elem.style.background = "teal";
+        }
+        
+        window.onload = function loadFunc() {
+            var elem = document.getElementById('open');
+            elem.style.animation = "onLoad 2s linear 0s 5 both";
+        }
+        
+    </script>
+       
+        
+        <div id="press"></div>onClick Event<br><br>
+        <div id="move" onmouseover="moTran()" onmouseout="moAni()"></div>Mouse in and out Event<br><br>
+        <div id="open" onclick="loadFunc();"></div>onLoad Function<br><br>
+        <div id="key"></div>Keyboard Click Event<br>
+        
+        
+    </body> 
+</html>

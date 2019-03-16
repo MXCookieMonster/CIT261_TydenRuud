@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Using Javascript Basics</title>
+</head>
+    
+    <style>
+        html {
+            background-color: darkslategrey;
+            padding: 20pt;
+        }
+        
+        body {
+            color: lime;
+        }
+    
+    </style>
+    
+<body>
+     
+    <h3>Local Storage API</h3>
+    
+    <form>
+            <fieldset>
+                <legend>Enter a Car</legend>
+                    <div>
+                        <label>
+                            <span>Manufacturer</span>
+                            <input id="manufacturer" type="text" placeholder="ex. Honda">
+                        </label>
+                    </div>
+                
+                    <div>
+                        <label>
+                            <span>Model</span>
+                            <input id="model" type="text" placeholder="ex. Accord">
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <label>
+                            <span>Color</span>
+                            <input id="color" type="text" placeholder="ex. Red">
+                        </label>
+                    </div>
+                   
+                    <div>
+                        <label>
+                            <span>Year</span>
+                            <input id="year" type="text" placeholder="ex. 2012">
+                        </label>
+                    </div>
+                </fieldset>
+        </form>
+    
+        <button type="button" onclick="storeObj()">Save New Object / Display Current Array of Objects</button><br>
+        
+        <button type="button" onclick="loadObj()">Display New Object</button><br>
+        
+        <p id="savedObject" hidden></p>
+        
+        <button type="button" onclick="clearData()">Remove Local Storage Objects</button>
+    
+        <div id="output"></div>
+        <div id="output1"></div>
+        <div id="output2"></div>
+        <div id="output3"></div>
+    
+    <script type ="text/javascript">
+     
+        var storedObject = "storedObject"; 
+            
+        function storeObj() {
+             
+            function carHolder(manufacturer, model, color, year) {
+               this.manufacturer = manufacturer;
+               this.model = model;
+               this.color = color;
+               this.year = year;
+           }
+            
+         var bug = new carHolder("Bugatti" , "Veyron", "Red" , 2010);
+	     var fer = new carHolder("Ferrari" , "La Ferrari", "Silver" , 2015);
+	     var lam = new carHolder("Lamborghini" , "Aventador" , "Yellow" , 2017);
+	     var aus = new carHolder("McLaren" , "Spider" , "Black" , 2019);    
+            
+          document.getElementById("output").innerHTML = 'Manufacturer = ' + bug.manufacturer + ' , Model = ' + bug.model + ' , Color = ' + bug.color + ' , Year = ' + bug.year;
+    
+          document.getElementById("output1").innerHTML = 'Manufacturer = ' + fer.manufacturer + ' , Model = ' + fer.model + ' , Color = ' + fer.color + ' , Year = ' + fer.year;
+       
+          document.getElementById("output2").innerHTML = 'Manufacturer = ' + lam.manufacturer + ' , Model = ' + lam.model + ' , Color = ' + lam.color + ' , Year = ' + lam.year;
+       
+          document.getElementById("output3").innerHTML = 'Manufacturer = ' + aus.manufacturer + ' , Model = ' + aus.model + ' , Color = ' + aus.color + ' , Year = ' + aus.year;     
+            
+        var man = document.getElementById("manufacturer").value;
+        var mod = document.getElementById("model").value;
+        var col = document.getElementById("color").value;
+        var yea = document.getElementById("year").value;       
+            
+            
+        var userCar = new carHolder(man, mod, col, yea);
+            
+        var carArray = new Array("car1" , "car2" , "car3", "car4" , "useCar");
+        carArray[0] = bug;
+        carArray[1] = fer;
+        carArray[2] = lam;
+        carArray[3] = aus;
+        carArray[4] = userCar;   
+       
+        localStorage.setItem(storedObject, JSON.stringify(userCar));
+           
+            } 
+        
+            
+        function loadObj() {
+            
+            document.getElementById("savedObject").style.display = "block";
+            
+                var userCar = JSON.parse(localStorage.getItem(storedObject));
+           
+           
+                if (localStorage.key(0)) {
+                
+                    document.getElementById("savedObject").innerHTML = 'Manufacturer = ' + userCar.manufacturer + ' , Model = ' + userCar.model + ' , Color = ' + userCar.color + ' , Year = ' + userCar.year;
+                }
+               
+                else
+                document.getElementById("savedObject").innerHTML = "No Local Data Detected."
+            
+        }
+        
+        function clearData() {
+            localStorage.clear();
+       
+        }
+    
+    
+
+</script>
+    
+ 
+</body>    
+    
+    
+</html>

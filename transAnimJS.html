@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            html {
+                background-color: darkslategrey;
+                color: lime;
+                padding: 20pt;
+            }
+         
+            div#transitionExample {
+                background-color: black;
+                height: 200px;
+                width: 200px;
+                overflow: hidden;
+            }
+            
+            div#aniEx {
+                background-color: darkred;
+                height: 200px;
+                width: 200px;
+            }
+            
+            @keyframes aniOne {
+                from { 
+                    background-color: black; 
+                    height: 200px;
+                    width: 200px;
+                }
+                to { 
+                    background-color: darkgoldenrod;
+                    height: 100px;
+                    width: 100px;
+                }
+            }
+            
+            @keyframes aniTwo {
+                0% {
+                    background-color: crimson;
+                    height: 200px;
+                    width: 200px;
+                }
+                33% {
+                    background-color: red;
+                    height: 300px;
+                    width: 300px;
+                }
+                66% {
+                    background-color: darkred;
+                    height: 100px;
+                    width: 100px;
+                }
+                100% {
+                    background-color:darkgoldenrod;
+                    height: 200px;
+                    width: 200px;
+                }
+            }
+        
+        </style>
+    </head>
+    <body>
+        <h3><u>Transitions and Animations Triggered With JavaScript</u></h3>
+        
+    <script>
+    // Transition Functions
+        
+        function colorChange(el, color) {
+            var change = document.getElementById(el);
+            change.style.transition = "background 1.0s both";
+            change.style.background = color;
+        }
+        
+        function moveUp(el) {
+            var change = document.getElementById(el);
+            change.style.transition = "width 1s ease-out 0s";
+            change.style.width = "0px";
+        }
+        
+        function moveDown(el) {
+            var change = document.getElementById(el);
+            change.style.transition = "width 1s ease-in 0s";
+            change.style.width = "200px";
+        }
+        
+    // Animation Functions
+        
+        function aniOne(el) {
+            var change = document.getElementById(el);
+            change.style.animation = "aniOne 3s both";
+        }
+        
+        function aniTwo(el) {
+            var change = document.getElementById(el);
+            change.style.animation = "aniTwo 3s both";
+        }
+        
+    </script>
+        
+        <h3>Transitions</h3>
+        
+        <button type="button" onclick="colorChange('transitionExample', 'crimson');">Crimson</button>
+        <button type="button" onclick="colorChange('transitionExample', 'darkgoldenrod');">Dark Yellow</button>
+        <button type="button" onclick="moveUp('transitionExample');">Box Collapse</button>
+        <button type="button" onclick="moveDown('transitionExample');">Box Open</button><br><br>
+        
+        <div id="transitionExample"></div>
+        
+        <h3>Animations</h3>
+        
+        <button type="button" onclick="aniOne('aniEx');">Run Animation</button>
+        
+        <button type="button" onclick="aniTwo('aniEx');">Run Animation</button><br><br>
+        
+        <div id="aniEx"></div>
+        
+    </body> 
+</html>

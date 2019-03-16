@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Using Javascript Basics</title>
+</head>
+    
+    <style>
+        html {
+            background-color: darkslategray;
+            color: lime;
+            padding: 20pt;
+        }
+    
+    </style>
+    
+<body>
+    
+   <h4>Guess My Number!</h4> 
+   <h4>It's between 1 and 10</h4>
+    
+<script type ="text/javascript">
+     
+  function numberGuess() {
+    
+     var myNumber = 9;   
+     var uGuess = parseFloat(document.getElementById('guessBox').value);
+     var answered;
+    
+        if (uGuess < myNumber) answered = "Higher";
+        if (uGuess > myNumber) answered = "Lower";
+        if (uGuess == myNumber) answered = "You guessed it!";
+     
+     document.getElementById('outputDiv').innerHTML = answered;
+      
+  }
+    
+    
+    function iteratingArray() {
+        
+        
+       var dreamCars, text, list, i;
+        dreamCars = ["Lamborghini Aventador", "Ferrari LaFerarri", "Bugatti Veyron", "Aston Martin One"];
+        
+        list = dreamCars.length;
+       
+        text = "<ul>";
+        for (i = 0; i < list; i++) {
+            text += "<li>" + dreamCars[i] + "</li>";
+        }
+        text += "</ul>";
+        
+        document.getElementById("array").innerHTML = text;
+    }
+        
+</script>
+    
+   <input type="text" id="guessBox">
+   <button type="button" onclick="numberGuess()">Guess</button>
+   <div id="outputDiv"></div>
+    
+   <p>An iterating list of cool cars!</p> 
+   <button type="button" onclick="iteratingArray()">Click here to see!</button>
+   <div id="array"></div>
+    
+    
+</body>    
+    
+    
+</html>
