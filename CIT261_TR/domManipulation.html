@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+    </head>
+    
+    <style>
+        html {
+            background-color: darkslategray;
+            color: lime;
+            padding: 20pt;
+        }
+        #container {
+            border-color: aqua;
+            border-style: dashed;
+            font-size: 14pt;
+        }
+        button {
+            background-color: lime;
+        }
+    </style>
+    
+    <body>
+        <h1>DOM Manipulation</h1>
+        
+        <button id="addTop">Add Top</button>
+        <section id="container">
+            <div class="clone">
+            <div>Original Element</div>
+            <button class="remove">Remove Element</button>
+            </div>
+        </section>
+        <button id="newBot">Add Bottom</button>
+    
+    <script>
+        var elementHold = 0;
+        var container = document.getElementById('container');
+        
+        function addNew(num) {
+          var createElement = document.createElement('p');
+          createElement.classList.add('clone');
+
+          var div = document.createElement('div');
+          div.appendChild(document.createTextNode(`New Element ${num}`));
+          createElement.appendChild(div);
+
+          var removeButt = document.createElement('button');
+          removeButt.appendChild(document.createTextNode('Remove Element'));
+          removeButt.classList.add('remove');
+          createElement.appendChild(removeButt);
+
+          return createElement;
+        };
+        document.getElementById('addTop').addEventListener('click', function() {
+          elementHold++;
+          var createElement = addNew(elementHold);
+          container.insertBefore(createElement, container.children[0]);
+        });
+
+        document.querySelector('#newBot').addEventListener('click', function() {
+          elementHold++;
+          var createElement = addNew(elementHold);
+          container.appendChild(createElement);
+        });
+
+        document.getElementById('container').addEventListener('click', function(e) {
+            let p = e.target.parentElement;
+            p.parentNode.removeChild(p);
+        });
+
+    </script>
+        
+    </body>
+    
+</html>

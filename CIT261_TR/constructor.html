@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Implementing constructors</title>
+</head>
+
+<body>
+   
+    <h1>Object Constructor</h1>
+    <h4>Monsters and such!</h4>
+    
+	<p></p>
+    <p id="output"></p>
+    <p id="output1"></p>
+    <p id="output2"></p>
+    <p id="output3"></p>
+    
+   <script type ="text/javascript">
+	
+    function Mob(type, health, attack) {
+		this.type = type;
+		this.health = health;
+		this.attack = attack;
+	}
+	
+	var rat    = new Mob("Rat" , 10, 5);
+	var wolf   = new Mob("Wolf" , 15, 8);
+	var goblin = new Mob("Goblin" , 20 , 10);
+	var troll  = new Mob("Troll" , 25 , 15);
+
+    document.getElementById("output").innerHTML = 'Type = ' + rat.type + ' , Attack = ' + rat.attack + ' , Health = ' + rat.health;
+    
+    document.getElementById("output1").innerHTML = 'Type = ' + wolf.type + ' , Attack = ' + wolf.attack + ' , Health = ' + wolf.health;
+       
+    document.getElementById("output2").innerHTML = 'Type = ' + goblin.type + ' , Attack = ' + goblin.attack + ' , Health = ' + goblin.health;
+       
+    document.getElementById("output3").innerHTML = 'Type = ' + troll.type + ' , Attack = ' + troll.attack + ' , Health = ' + troll.health;
+       
+    
+    
+    </script>
+
+</body>
+</html>

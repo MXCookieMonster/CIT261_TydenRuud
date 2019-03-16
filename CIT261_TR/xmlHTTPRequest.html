@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>JSON Parse Stringify</title>
+</head>
+    
+    <style>
+        html {
+            background-color:beige;
+        }
+        body {
+            font-size:12pt;
+            padding-left: 10pt;
+                
+            }
+        
+        h3 {
+            color:darkblue;
+        }
+        
+        div#style {
+            border-style:double;
+            
+        }
+        
+        div#style1 {
+            border-style:double;
+            border-spacing: 2pt; 
+        }
+        
+    </style>
+
+<body>
+  
+   
+    <div id="style">
+    <h3>Please Enter A Number Between 0 - 99 to Generate a Mystery Car</h3>
+    
+    <input type="text" id="guessBox">
+   <button type="button" onclick="returnCar()">Generate</button>
+    
+    <br><br><div><b><u>Mystery Car Is:</u></b></div><br>
+    <div><b>Car Common Name:</b> <span id="common"></span></div>
+    <div><b>Manufacturer:</b> <span id="name"></span></div>
+    <div><b>Country:</b> <span id="country"></span></div>
+    <div><b>Manufacturer ID:</b> <span id="id"></span></div>
+
+   
+    </div>
+    
+    <script>
+            
+            //This is where I call a JSON obect
+        function returnCar() {
+            var callJSON = new XMLHttpRequest();
+            var url = "https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json";
+            var generate = parseFloat(document.getElementById('guessBox').value);
+            
+            callJSON.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var carCall = JSON.parse(this.responseText);
+                    
+                    document.getElementById("country").innerHTML = carCall.Results[generate].Country;
+                    document.getElementById("common").innerHTML = carCall.Results[generate].Mfr_CommonName;
+                    document.getElementById("name").innerHTML = 
+                    carCall.Results[generate].Mfr_Name;
+                    document.getElementById("id").innerHTML = carCall.Results[generate].Mfr_ID;
+                }
+            };
+            callJSON.open("GET", url, true);
+            callJSON.send();
+            
+        }
+            
+        </script>
+    
+    
+</body>
+    
+</html>

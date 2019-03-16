@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>JSON Parse Stringify</title>
+</head>
+    
+    <style>
+        html {
+            background-color:beige;
+        }
+        body {
+            font-size:12pt;
+            padding-left: 10pt;
+                
+            }
+        
+        h3 {
+            color:darkblue;
+        }
+        
+        div#style {
+            border-style:double;
+            
+        }
+        
+        div#style1 {
+            border-style:double;
+            border-spacing: 2pt; 
+        }
+        
+    </style>
+
+<body>
+    <div id="style1">
+    <h3>JSON Object, Parse, Stringify</h3>
+    <p id="printString"></p>
+    </div>
+   
+    <div id="style">
+    <h3>Calling JSON Objects</h3>
+    
+    <div><b><u>Aston Martin</u></b></div>
+    <div id="asto"></div>
+    <div id="man"></div>
+    <br>
+    <div><b><u>Bugatti</u></b></div>
+    <div id="buga"></div>
+    <div id="manu"></div>
+    <br>
+    <div><b><u>Lamborghini</u></b></div>
+    <div id="lambo"></div>
+    <div id="manuf"></div>
+    <br>
+    </div>
+    
+    <script>
+            //A contructor function
+            function superCar(manufacturer, make, year){
+                this.manufacturer = manufacturer;
+                this.make = make;
+                this.year = year;    
+            }
+            
+            //Creates a new object using the constructor
+            var carOne= new superCar('Lamborghini', 'Aventador', '2015');
+            
+            //Adds an array that creates a list of manufacturers
+            carOne.manufacturer = ['Lamborghini', 'Ferrari', 'Bugatti', 'Austin Martin'];
+            
+            //Uses the stringify method to create a string of the object
+            var createString = JSON.stringify(carOne);
+            document.getElementById("printString").innerHTML = createString;
+            
+            //This is where I call a JSON obect
+            var callJSON = new XMLHttpRequest();
+            var url = "https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json";
+            
+            callJSON.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var carCall = JSON.parse(this.responseText);
+                    
+                    document.getElementById("lambo").innerHTML = carCall.Results[85].Country;
+                    document.getElementById("manuf").innerHTML = carCall.Results[85].Mfr_Name;
+                    document.getElementById("buga").innerHTML = 
+                    carCall.Results[18].Country;
+                    document.getElementById("manu").innerHTML = carCall.Results[18].Mfr_Name;
+                    document.getElementById("asto").innerHTML = carCall.Results[2].Country;
+                    document.getElementById("man").innerHTML = carCall.Results[2].Mfr_Name;
+                }
+            };
+            callJSON.open("GET", url, true);
+            callJSON.send();
+            
+        </script>
+    
+    
+</body>
+    
+</html>
