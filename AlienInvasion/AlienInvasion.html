@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+
+    <title>Alien Invasion</title>
+    
+    
+    <style>
+
+    html {
+        padding: 1pt;
+    }
+
+    body {
+        background-image: url("spacebackground.jpg");
+        }
+
+    h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 1pt;
+        text-align: center;
+        color: rgb(30, 255, 0);
+        text-decoration: underline yellow;
+        font-size: 35px;
+        word-spacing: 3px;
+        text-shadow: 5px 3px black;
+        margin: 5px;
+    }
+
+    button#againButt {
+        transition-duration: 0.3s;
+        background-color: aqua;
+        border-color: rgb(255, 255, 0);
+        border-radius: 20px;
+        padding: 14px 30px;
+        font-size: 15pt;
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        margin-left: 375px;
+    }
+
+    button#againButt:hover {
+        background-color: lime;
+        color:black;
+    }
+
+    button#ruleButt {
+        transition-duration: 0.3s;
+        background-color: aqua;
+        border-color: rgb(255, 255, 0);
+        border-radius: 20px;
+        padding: 14px 30px;
+        font-size: 15pt;
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        margin-left: 375px;
+        margin-top: 75px;
+    }
+
+    button#ruleButt:hover {
+        background-color: lime;
+        color:black;
+    }
+
+    button#helpButt {
+        transition-duration: 0.3s;
+        background-color: aqua;
+        border-color: rgb(255, 255, 0);
+        border-radius: 20px;
+        padding: 14px 30px;
+        font-size: 15pt;
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        margin-left: 375px;
+        margin-top: 150px;
+    }
+
+    button#helpButt:hover {
+        background-color: lime;
+        color:black;
+    }
+
+    div#helpInfo {
+        font-size: 15pt;
+        z-index: 1;
+        left: 50%;
+        padding: 3px;
+        margin-top: 150px;
+        position: absolute;
+        margin-left: 375px;
+        height: 0px;
+        width: 0px;
+        display: none;
+        overflow: hidden;
+        
+    }
+
+    div#ruleInfo {
+        font-size: 15pt;
+        z-index: 1;
+        left: 50%;
+        padding: 3px;
+        margin-top: 150px;
+        position: absolute;
+        margin-left: 375px;
+        height: 0px;
+        width: 0px;
+        display: none;
+        overflow: hidden;
+        
+    }
+
+    @keyframes helpMove {
+        from {
+            margin-left: 375px;
+            margin-top: 150px;
+            height: 0px;
+            width: 0px;
+        }
+        to {
+            margin-top: 225px;
+            margin-left: 375px;
+            height: 75px;
+            width: 295px;
+            border: 3px solid;
+            border-color: yellow;
+            background: aqua;
+        }
+    }
+
+    @keyframes helpOut {
+        from {
+            margin-top: 225px;
+            margin-left: 375px;
+            height: 75px;
+            width: 295px;
+            border: 3px solid;
+            border-color: yellow;
+            background: aqua;
+        }
+        
+        to {
+            margin-left: 375px;
+            margin-top: 150px;
+            height: 0px;
+            width: 0px;
+        }
+     
+    }
+
+    @keyframes ruleMove {
+        from {
+            margin-left: 375px;
+            margin-top: 75px;
+            height: 0px;
+            width: 0px;
+        }
+        to {
+            margin-top: 315px;
+            margin-left: 375px;
+            height: 75px;
+            width: 295px;
+            border: 3px solid;
+            border-color: yellow;
+            background: aqua;
+        }
+    }
+
+    @keyframes ruleOut {
+        from {
+            margin-top: 315px;
+            margin-left: 375px;
+            height: 75px;
+            width: 295px;
+            border: 3px solid;
+            border-color: yellow;
+            background: aqua;
+        }
+        
+        to {
+            margin-left: 375px;
+            margin-top: 75px;
+            height: 0px;
+            width: 0px;
+        }
+     
+    }
+
+    canvas {
+        position: absolute;
+        z-index: 1;
+        display: block;
+        left: 50%;
+        margin-left: -350px;
+    }
+
+        
+    </style>
+
+
+    <head>
+     <title>Alien Invasion</title>
+    </head>
+    
+    <body>
+        <h1>Alien Invasion</h1>
+        
+        <button id="againButt" onclick="playAgain()">Play Again</button>
+        <button id="ruleButt" type="button" onclick="getRule()" ondblclick="hiderr()">Objective</button>
+        <button id="helpButt" type="button" onclick="getHelp()" ondblclick="hider()">Controls</button>
+        <div id="helpInfo" onclick = "hider()"> Left Arrow Rotates Ship Left - Right Arrow Rotates Ship Right - Spacebar Fires Lazer (click to hide)</div>
+        <div id="ruleInfo" onclick = "hiderr()"> Stay Alive as long as possible while scoring points by blowing up Alien ships! Enjoy!(click to hide)</div>
+        
+        <audio controls autoplay loop hidden>
+            <source src="music_zapsplat_ultimatum.mp3">
+        </audio>
+
+
+        <script type="text/javascript" src="p5min.js"></script>
+        <script type="text/javascript" src="AlienControl.js"></script>
+        <script type="text/javascript" src="AlienCreate.js"></script>
+        <script type="text/javascript" src="playerShip.js"></script>
+        <script type="text/javascript" src="Lazer.js"></script>
+        <script>
+             
+             function playAgain() {
+                location.reload();
+            }
+
+            function getHelp() {
+                document.getElementById("helpInfo").style.display = "block";
+                document.getElementById("helpInfo").style.animation = "helpMove 0.25s linear 0s both";
+            }
+
+            function hider() {
+                document.getElementById("helpInfo").style.animation = "helpOut 0.25s linear 0s both";
+                
+            }
+
+            function getRule() {
+                document.getElementById("ruleInfo").style.display = "block";
+                document.getElementById("ruleInfo").style.animation = "ruleMove 0.4s linear 0s both";
+            }
+
+            function hiderr() {
+                document.getElementById("ruleInfo").style.animation = "ruleOut 0.4s linear 0s both";
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode == 32) {
+                    var audio = new Audio("alexander_gastrell_fully_charged_energy_impact_medium_deep_powerful_alien_spaceship_big_gun_hit_explosion_laser_future_01_010.mp3");
+                    audio.play();
+                    return false;
+                }
+            })
+
+            
+
+        </script>
+   
+   
+    </body>
+
+
+</html>
